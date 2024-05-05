@@ -1,17 +1,22 @@
 import java.util.ArrayList;
 
+/**
+ * Represents a campus map containing a list of buildings.
+ */
 public class CampusMap {
 
     ArrayList<Building> buildings;
 
-    /* Default constructor, initializes empty ArrayList */
+    /**
+     * Constructs a new CampusMap object with an empty list of buildings.
+     */
     public CampusMap() {
         buildings = new ArrayList<Building>();
     }
 
     /**
-     * Adds a Building to the map
-     * @param b the Building to add
+     * Adds a Building to the map.
+     * @param b The Building to add.
      */
     public void addBuilding(Building b) {
         System.out.println("Adding building...");
@@ -20,9 +25,9 @@ public class CampusMap {
     }
 
     /**
-     * Removes a Building from the map
-     * @param b the Building to remove
-     * @return the removed Building
+     * Removes a Building from the map.
+     * @param b The Building to remove.
+     * @return The removed Building.
      */
     public Building removeBuilding(Building b) {
         System.out.println("Removing building...");
@@ -31,6 +36,10 @@ public class CampusMap {
         return b;
     }
 
+    /**
+     * Generates a string representation of the campus map.
+     * @return A string representation of the campus map.
+     */
     public String toString() {
         String mapString = "DIRECTORY of BUILDINGS";
 
@@ -40,21 +49,16 @@ public class CampusMap {
         return mapString;
     }
 
+    /**
+     * Main method to test the CampusMap class.
+     * @param args Command-line arguments (not used).
+     */
     public static void main(String[] args) {
         CampusMap myMap = new CampusMap();
         myMap.addBuilding(new Building("Ford Hall", "100 Green Street Northampton, MA 01063", 4));
         myMap.addBuilding(new Building("Bass Hall", "4 Tyler Court Northampton, MA 01063", 4));
         myMap.addBuilding(new Library("Nielson Library", "7 Neilson Drive, Northampton, MA 01063", 5));
         myMap.addBuilding(new Cafe("Campus Center Cafe", "100 Elm St, Northampton, MA 01063", 3, 100, 100, 100, 100));
-        myMap.addBuilding(new House("Duckett House", "41, Elm Street, Northampton, MA, 01063-6322", 4, true));
-        myMap.addBuilding(new Building("Field House", "106 Lower College Ln, Northampton, MA 01063", 1));
-        myMap.addBuilding(new House("Dawes House", "8 Bedford Terrace, Northampton, MA 01063", 2, true));
-        myMap.addBuilding(new Building("Design and Thinking Initiative", "25a Henshaw Ave, Northampton, MA 01063", 2));
-        myMap.addBuilding(new Cafe("Compass Cafe", "1st Floor 7 Neilson Drive, Northampton, MA 01063", 1, 100, 100, 100, 100));
-        myMap.addBuilding(new Building("Lyman Plant House and Conservatory", "16 College Ln, Northampton, MA 01063", 1));
-        myMap.addBuilding(new Building("Ainsworth Gym and Olin Fitness Center", "102 Lower College Ln, Northampton, MA 01063", 6));
-        myMap.addBuilding(new House("Chase House", "42, Elm Street, Northampton, MA, 01063-6322", 4, true));
-        System.out.println(myMap);
+       
     }
-    
 }

@@ -1,10 +1,20 @@
 import java.util.ArrayList;
-
+/**
+ * Represents a library, a type of building where books are stored and made available for borrowing.
+ * Extends the Building class.
+ */
 public class Library extends Building {
+
     private ArrayList<String> bookTitles;
     private ArrayList<Boolean> bookAvailable;
 
-    // Default constructor
+    /**
+     * Constructs a new Library object with the specified name, address, and number of floors.
+     * Initializes the bookTitles and bookAvailable ArrayLists.
+     * @param name The name of the library.
+     * @param address The address of the library.
+     * @param nFloors The number of floors in the library.
+     */
     public Library(String name, String address, int nFloors) {
         super(name, address, nFloors);
         bookTitles = new ArrayList<>();
@@ -12,23 +22,41 @@ public class Library extends Building {
         System.out.println("You have built a library: 📖");
     }
 
-    // Method to add a book to the library
+    /**
+     * Adds a book title to the library's collection.
+     * The book is initially marked as available.
+     * @param title The title of the book to be added.
+     */
     public void addTitle(String title) {
         bookTitles.add(title);
         bookAvailable.add(true); // Set the book as available
     }
 
-    // Overloaded method 1: Adding a book with a specified author
+    /**
+     * Adds a book title with a specified author to the library's collection.
+     * The book is initially marked as available.
+     * @param title The title of the book to be added.
+     * @param author The author of the book.
+     */
     public void addTitle(String title, String author) {
         addTitle(title + " by " + author);
     }
 
-    // Overloaded method 2: Adding a book with a specified category
+    /**
+     * Adds a book title with a specified category and year to the library's collection.
+     * The book is initially marked as available.
+     * @param title The title of the book to be added.
+     * @param category The category of the book.
+     * @param year The year of publication of the book.
+     */
     public void addTitle(String title, String category, int year) {
         addTitle(title + " (" + category + ", " + year + ")");
     }
 
-    // Method to remove a book from the library
+    /**
+     * Removes a book from the library's collection based on its title.
+     * @param title The title of the book to be removed.
+     */
     public void removeTitle(String title) {
         int index = bookTitles.indexOf(title);
         if (index != -1) {
@@ -40,7 +68,10 @@ public class Library extends Building {
         }
     }
 
-    // Overloaded method 1: Removing a book by specifying the index
+    /**
+     * Removes a book from the library's collection based on its index.
+     * @param index The index of the book to be removed.
+     */
     public void removeTitle(int index) {
         if (index >= 0 && index < bookTitles.size()) {
             String removedTitle = bookTitles.remove(index);
@@ -51,7 +82,10 @@ public class Library extends Building {
         }
     }
 
-    // Overloaded method 2: Removing a book by specifying the author
+    /**
+     * Removes a book from the library's collection based on its author.
+     * @param author The author of the book to be removed.
+     */
     public void removeTitleByAuthor(String author) {
         for (int i = 0; i < bookTitles.size(); i++) {
             if (bookTitles.get(i).contains(author)) {
@@ -64,7 +98,11 @@ public class Library extends Building {
         System.out.println("No books by " + author + " found in the library's collection.");
     }
 
-    // Method to check out a book from the library
+    /**
+     * Checks out a book from the library based on its title.
+     * Marks the book as unavailable.
+     * @param title The title of the book to be checked out.
+     */
     public void checkOut(String title) {
         int index = bookTitles.indexOf(title);
         if (index != -1) {
@@ -75,7 +113,11 @@ public class Library extends Building {
         }
     }
 
-    // Method to return a book to the library
+    /**
+     * Returns a book to the library based on its title.
+     * Marks the book as available.
+     * @param title The title of the book to be returned.
+     */
     public void returnBook(String title) {
         int index = bookTitles.indexOf(title);
         if (index != -1) {
@@ -86,11 +128,31 @@ public class Library extends Building {
         }
     }
 
-    // Method to print the entire collection
+    /**
+     * Prints the entire collection of books in the library along with their availability status.
+     */
     public void printCollection() {
         System.out.println("Library Collection:");
         for (int i = 0; i < bookTitles.size(); i++) {
             System.out.println((i + 1) + ". " + bookTitles.get(i) + " - Available: " + bookAvailable.get(i));
         }
+    }
+
+    /**
+     * Overrides the showOptions method in the Building class.
+     * Displays additional options specific to the Library class.
+     */
+    @Override
+    public void showOptions() {
+        super.showOptions();
+        System.out.println("+ addTitle(String title)");
+        System.out.println("+ addTitle(String title, String author)");
+        System.out.println("+ addTitle(String title, String category, int year)");
+        System.out.println("+ removeTitle(String title)");
+        System.out.println("+ removeTitle(int index)");
+        System.out.println("+ removeTitleByAuthor(String author)");
+        System.out.println("+ checkOut(String title)");
+        System.out.println("+ returnBook(String title)");
+        System.out.println("+ printCollection()");
     }
 }
